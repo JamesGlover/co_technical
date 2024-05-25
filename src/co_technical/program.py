@@ -30,18 +30,16 @@ class Program:
             self._parse(instruction)
 
     def _parse(self, instruction: str) -> bool:
-        command, *args = instruction.split()
-
-        match command, args:
-            case ("PLACE", [args]):
+        match instruction.split():
+            case ["PLACE", args]:
                 return self._place(args)
-            case ("MOVE", []):
+            case ["MOVE"]:
                 return self._robot.move()
-            case ("LEFT", []):
+            case ["LEFT"]:
                 return self._robot.left()
-            case ("RIGHT", []):
+            case ["RIGHT"]:
                 return self._robot.right()
-            case ("REPORT", []):
+            case ["REPORT"]:
                 return self._report()
             case _:
                 return False
