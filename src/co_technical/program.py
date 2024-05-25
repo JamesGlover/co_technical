@@ -1,3 +1,4 @@
+from fileinput import FileInput
 from typing import IO
 
 from co_technical.direction import Direction
@@ -11,11 +12,11 @@ PLACE_ARGUMENTS = 3
 class Program:
     """Handle loading of instructions from stdin or a file and passing them to robot."""
 
-    _command_input: IO[str]
+    _command_input: IO[str] | FileInput[str]
     _robot: Robot
     _table: Table
 
-    def __init__(self, command_input: IO[str]) -> None:
+    def __init__(self, command_input: IO[str] | FileInput[str]) -> None:
         """Create a new program for handling commands."""
         self._command_input = command_input
         self._robot = Robot()

@@ -37,6 +37,7 @@ flint = "ruff check . --fix"
 all = { composite = ["formatcheck", "lint", "test"] }
 autofix = { composite = ["format", "flint"] }
 co_technical = "python co_technical"
+# co_technical = "co_technical.program:invoke"
 
 [tool.ruff]
 # Ruff is a super-fast linter, that replaces many other tools

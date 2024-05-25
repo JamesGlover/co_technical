@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+
+import sys
+sys.path.append('./src')
+
+import fileinput
+from co_technical import Program
+
+"""
+Base application for the Toy Robot Simulator project.
+
+It is intended to be invoked through the command line.
+
+Without any arguments it will take instructions from standard in:
+
+pdm co_technical
+
+If multiple arguments as supplied, the input will be sourced from each filename in
+turn.
+
+pdm co_technical examples/example_a
+"""
+
+if __name__ == "__main__":
+  with fileinput.input() as input_stream:
+    Program(input_stream).execute()
