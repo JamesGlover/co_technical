@@ -39,3 +39,8 @@ dependencies for testing and linting.
 - `python -m venv .venv`
 - `.venv/bin/activate` or `PS .venv\Scripts\Activate.ps1`
 - `pip install -r requirements.txt`
+
+
+## Testing
+
+Tests can be run with `pdm test`
