@@ -53,3 +53,10 @@ class TestCoTechnical:
         execute_for("report_without_place")
         captured = capsys.readouterr()
         assert captured.out == ""
+
+    @m.context("when given invalid commands")
+    @m.it("ignores the commands and outputs nothing")
+    def test_report_with_invalid_commands(self, capsys: CaptureFixture[str]) -> None:
+        execute_for("with_invalid_commands")
+        captured = capsys.readouterr()
+        assert captured.out == ""

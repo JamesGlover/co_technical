@@ -1,3 +1,4 @@
+from collections.abc import Generator
 from fileinput import FileInput
 from typing import IO
 
@@ -25,7 +26,7 @@ class Program:
 
     def execute(self) -> None:
         """Load and execute the commands in command_input."""
-        for instruction in self._command_input:
+        for instruction in self._instructions():
             self._parse(instruction)
 
     def _parse(self, instruction: str) -> bool:
@@ -53,7 +54,11 @@ class Program:
 
         x, y, direct_s = provided_args
         position = Position(int(x), int(y))
-        direction = Direction[direct_s]
+        try:
+            direction = Direction[direct_s]
+        except KeyError:
+            return False
+
         return self._robot.place(position, direction, self._table)
 
     def _report(self) -> bool:
@@ -61,3 +66,9 @@ class Program:
         if report:
             print(report)
         return report is not None
+
+    def _instructions(self) -> Generator[str, None, None]:
+        for instruction_line in self._command_input:
+            instruction = instruction_line.strip()
+            if instruction:
+                yield instruction
