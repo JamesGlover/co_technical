@@ -40,6 +40,15 @@ dependencies for testing and linting.
 - `.venv/bin/activate` or `PS .venv\Scripts\Activate.ps1`
 - `pip install -r requirements.txt`
 
+## Usage
+
+### With pdm
+
+- `pdm co_technical [filename]`
+
+### Without pdm
+
+- `python co_technical`
 
 ## Testing
 
