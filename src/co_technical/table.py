@@ -1,6 +1,5 @@
 """Module for the Table class."""
 
-
 from co_technical import Position
 
 
@@ -27,7 +26,7 @@ class Table:
         self._x = x
         self._y = y
 
-    def within_table_bounds(self, position: Position) -> bool:
+    def within_bounds(self, position: Position) -> bool:
         """
         Indicate whether position is within the bounds of the table.
 
@@ -38,8 +37,6 @@ class Table:
         bool: True if within bounds, False otherwise.
 
         """
-        return (
-             position.x >= 0 and position.x <= self._x
-        ) and (
+        return (position.x >= 0 and position.x <= self._x) and (
             position.y >= 0 and position.y <= self._y
         )
