@@ -44,6 +44,7 @@ dependencies for testing and linting.
 
 ### With pdm
 
+- `pdm co_technical` To use STDIN
 - `pdm co_technical [filename]`
 
 ### Without pdm
