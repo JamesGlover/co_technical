@@ -31,20 +31,19 @@ class Program:
 
     def _parse(self, instruction: str) -> bool:
         command, *args = instruction.split()
-        match command:
-            case "PLACE":
-                return self._place(*args)
-            case "MOVE":
+
+        match command, args:
+            case ("PLACE", [args]):
+                return self._place(args)
+            case ("MOVE", []):
                 return self._robot.move()
-            case "LEFT":
+            case ("LEFT", []):
                 return self._robot.left()
-            case "RIGHT":
+            case ("RIGHT", []):
                 return self._robot.right()
-            case "REPORT":
+            case ("REPORT", []):
                 return self._report()
             case _:
-                # Unknown command. Undefined behaviour via spec.
-                # Ignoring
                 return False
 
     def _place(self, args: str) -> bool:

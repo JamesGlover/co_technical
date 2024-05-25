@@ -53,3 +53,18 @@ dependencies for testing and linting.
 ## Testing
 
 Tests can be run with `pdm test`
+
+## Limitations and considerations
+
+### Invalid commands
+
+Completely invalid commands are undefined behaviour in the specification. However,
+consistent with the requirements that establish that other invalid inputs should be
+ignored I have ignored invalid inputs.
+
+If additional arguments are provided to MOVE, LEFT, RIGHT or REPORT the commands are
+ignored.
+
+While this best aligns with the requested specification, I believe it would
+be advantageous to log invalid input - possibly including moves that would send the
+robot off the table - to standard error.
