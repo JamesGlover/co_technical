@@ -52,10 +52,10 @@ class Program:
             return False
 
         x, y, direct_s = provided_args
-        position = Position(int(x), int(y))
         try:
+            position = Position(int(x), int(y))
             direction = Direction[direct_s]
-        except KeyError:
+        except (KeyError, ValueError):
             return False
 
         return self._robot.place(position, direction, self._table)
