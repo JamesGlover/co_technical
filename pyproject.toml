@@ -23,14 +23,20 @@ test = [
     "pytest-it>=0.1.5"
 ]
 
+[tool.pytest.ini_options]
+pythonpath = [
+    "./src"
+]
+
 [tool.pdm.scripts]
 test = "pytest --it"
 format = "ruff format"
 formatcheck = "ruff format --check"
 lint = "ruff check ."
-flint = "ruff . --fix"
+flint = "ruff check . --fix"
 all = { composite = ["formatcheck", "lint", "test"] }
 autofix = { composite = ["format", "flint"] }
+co_technical = "python co_technical"
 
 [tool.ruff]
 # Ruff is a super-fast linter, that replaces many other tools
@@ -66,9 +72,13 @@ select = [
 ignore = [
     "ANN101", # Ignore type annotations for self, it's self-explanatory
     "D203",   # Docstrings: Need to pick D203 or D211
-    "D212"    # Docstrings: Need to D212 or D213
+    "D212",   # Docstrings: Need to D212 or D213,
+    "D407",   # Opted for Google style, as less boilerplate
+    "COM812", # Incompatible with formatter
+    "ISC001", # Incompatible with formatter
+    "D100"    # I've mostl got single classes in modules, so module documentation feels redundant
 ]
 
 [tool.ruff.lint.per-file-ignores]
 # Enforcing docstrings in our tests is overkill and asserts are expected
-"**/tests/*" = ["D102", "D103", "D100", "S101"]
+"**/tests/*" = ["D101", "D102", "D103", "D100", "S101"]
