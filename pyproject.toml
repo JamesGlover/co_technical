@@ -3,12 +3,12 @@ name = "co_technical"
 version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
-    {name = "James Glover", email = "jsaglover@gmail.com"},
+    { name = "James Glover", email = "jsaglover@gmail.com" }
 ]
 dependencies = []
 requires-python = "==3.12.*"
 readme = "README.md"
-license = {text = "MIT"}
+license = { text = "MIT" }
 
 
 [tool.pdm]
@@ -16,9 +16,59 @@ distribution = false
 
 [tool.pdm.dev-dependencies]
 dev = [
-    "ruff>=0.4.5",
+    "ruff>=0.4.5"
 ]
 test = [
     "pytest>=8.2.1",
-    "pytest-it>=0.1.5",
+    "pytest-it>=0.1.5"
 ]
+
+[tool.pdm.scripts]
+test = "pytest --it"
+format = "ruff format"
+formatcheck = "ruff format --check"
+lint = "ruff check ."
+flint = "ruff . --fix"
+all = { composite = ["formatcheck", "lint", "test"] }
+autofix = { composite = ["format", "flint"] }
+
+[tool.ruff]
+# Ruff is a super-fast linter, that replaces many other tools
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",   # Pycode style
+    "F",
+    "W",   # Pyflakes (Errors, Warnings)
+    "I",   # Isort (Sort imports)
+    "N",   # Pep8 - naming
+    "UP",  # Avoid outdated python
+    "YTT", # Flake8-2020 rules
+    "BLE", # Prevent catching exceptions blindly
+    "RUF", # Ruff specific rules
+    "FBT", # Flake8 - Bool trap
+    "B",   # Flake8 - Bugbear
+    "A",   # Flake8 - Builtin shadowing
+    "COM", # Flake8 - commas
+    "C4",  # Flake8 - Comprahend those lists!
+    "DTZ", # Flake8 - Timezone stuff
+    "T10", # Do not leave debuggers in place
+    "EXE", # Make sure that executable flags and shebangs match up
+    "ISC", # Make implicit string concatenation sensible
+    "G",   # Flake-8 Logging rules
+    "TRY", # Exception handling linting, but its called TRYceratops so...
+    "PL",  # Plylint, so lots of opinionated linters
+    "ANN", # - Enforces type annotations
+    "S",   # Bandit (Security)
+    "D"    # - Enforces docstrings
+]
+ignore = [
+    "ANN101", # Ignore type annotations for self, it's self-explanatory
+    "D203",   # Docstrings: Need to pick D203 or D211
+    "D212"    # Docstrings: Need to D212 or D213
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Enforcing docstrings in our tests is overkill and asserts are expected
+"**/tests/*" = ["D102", "D103", "D100", "S101"]
