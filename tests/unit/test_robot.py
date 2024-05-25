@@ -92,7 +92,9 @@ class TestRobot:
     @m.describe("right")
     @m.context("when not on the table")
     @m.it("will be ignored")
-    def test_right_when_not_on_table_wont_rotate(self, robot: Robot, table: Table) -> None:
+    def test_right_when_not_on_table_wont_rotate(
+        self, robot: Robot, table: Table
+    ) -> None:
         assert not robot.right()
         assert robot.direction is None
 

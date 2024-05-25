@@ -1,6 +1,5 @@
 """Classes dealing with direction."""
 
-from doctest import debug
 from enum import Enum
 from typing import NamedTuple
 
@@ -15,10 +14,6 @@ class DirectionTuple(NamedTuple):
 
     x: int
     y: int
-
-class Rotation(Enum):
-    LEFT = -1
-    RIGHT = 1
 
 
 class Direction(DirectionTuple, Enum):
@@ -35,8 +30,8 @@ class Direction(DirectionTuple, Enum):
     SOUTH = DirectionTuple(0, -1)  # type: ignore
     WEST = DirectionTuple(-1, 0)  # type: ignore
 
-    def rotate(self, dir: int) -> "Direction":
+    def rotate(self, rotate_dir: int) -> "Direction":
         """Provide the next direction in the rotation."""
         directions_list = list(Direction)
-        new_index = directions_list.index(self) + dir
+        new_index = directions_list.index(self) + rotate_dir
         return directions_list[new_index]

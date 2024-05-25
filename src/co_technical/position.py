@@ -18,7 +18,5 @@ class Position(NamedTuple):
     y: int
 
     def move(self, vector: DirectionTuple) -> "Position":
-        """
-        Returns a new position having moved one step in direction.
-        """
+        """Return a new position having moved one step in direction."""
         return Position(self.x + vector.x, self.y + vector.y)
