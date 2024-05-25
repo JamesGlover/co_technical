@@ -1,0 +1,23 @@
+[project]
+name = "co_technical"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "James Glover", email = "jsaglover@gmail.com"},
+]
+dependencies = []
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.4.5",
+]
+test = [
+    "pytest>=8.2.1",
+]
