@@ -1,6 +1,6 @@
 """Module for the Table class."""
 
-from co_technical import Position
+from co_technical.position import Position
 
 
 class Table:
