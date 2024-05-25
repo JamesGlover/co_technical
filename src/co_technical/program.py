@@ -7,8 +7,6 @@ from co_technical.position import Position
 from co_technical.robot import Robot
 from co_technical.table import Table
 
-PLACE_ARGUMENTS = 3
-
 
 class Program:
     """Handle loading of instructions from stdin or a file and passing them to robot."""
@@ -45,18 +43,16 @@ class Program:
                 return False
 
     def _place(self, args: str) -> bool:
-        provided_args: list[str] = args.split(",")
-        if len(provided_args) != PLACE_ARGUMENTS:
-            return False
-
-        x, y, direct_s = provided_args
-        try:
-            position = Position(int(x), int(y))
-            direction = Direction[direct_s]
-        except (KeyError, ValueError):
-            return False
-
-        return self._robot.place(position, direction, self._table)
+        match args.split(","):
+            case [x, y, direction_name]:
+                try:
+                    position = Position(int(x), int(y))
+                    direction = Direction[direction_name]
+                    return self._robot.place(position, direction, self._table)
+                except (KeyError, ValueError):
+                    return False
+            case _:
+                return False
 
     def _report(self) -> bool:
         report = self._robot.report()
