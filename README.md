@@ -69,3 +69,8 @@ ignored.
 While this best aligns with the requested specification, I believe it would
 be advantageous to log invalid input - possibly including moves that would send the
 robot off the table - to standard error.
+
+### CI and Dockerfiles
+
+I've considered these out of scope for this exercise. I'm happy to discuss the
+advantages and my experience of these tools during the interview.
