@@ -5,7 +5,7 @@
 groups = ["default", "dev", "test"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:2eafe7f88793708a3b9e3b7880f614e9a32894b3971b2c59de5f9a8ce3af04d4"
+content_hash = "sha256:9046eacf3ded1d91c17a27ac1777aa0355e48e8edb637312bec8c42baf9f8de1"
 
 [[package]]
 name = "colorama"
@@ -67,6 +67,15 @@ dependencies = [
 files = [
     {file = "pytest-8.2.1-py3-none-any.whl", hash = "sha256:faccc5d332b8c3719f40283d0d44aa5cf101cec36f88cde9ed8f2bc0538612b1"},
     {file = "pytest-8.2.1.tar.gz", hash = "sha256:5046e5b46d8e4cac199c373041f26be56fdb81eb4e67dc11d4e10811fc3408fd"},
+]
+
+[[package]]
+name = "pytest-it"
+version = "0.1.5"
+summary = "Pytest plugin to display test reports as a plaintext spec, inspired by Rspec: https://github.com/mattduck/pytest-it."
+groups = ["test"]
+files = [
+    {file = "pytest-it-0.1.5.tar.gz", hash = "sha256:d2d21e9dd371a423b357e955ebe4afd5cd848508e448e6476f21eb034733e2f1"},
 ]
 
 [[package]]

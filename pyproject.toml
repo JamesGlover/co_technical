@@ -20,4 +20,5 @@ dev = [
 ]
 test = [
     "pytest>=8.2.1",
+    "pytest-it>=0.1.5",
 ]
