@@ -29,8 +29,16 @@ class TestTable:
     @m.it("returns true")
     def test_within_bounds_edge_of_range(self) -> None:
         table = Table(5, 5)
-        position = Position(5, 5)
+        position = Position(4, 4)
         assert table.within_bounds(position)
+
+    @m.describe("within_bounds")
+    @m.context("with values just outside tht range")
+    @m.it("returns false")
+    def test_within_bounds_just_outside_the_range(self) -> None:
+        table = Table(5, 5)
+        position = Position(5, 5)
+        assert not table.within_bounds(position)
 
     @m.describe("within_bounds")
     @m.context("with values out of range")

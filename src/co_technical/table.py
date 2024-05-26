@@ -37,6 +37,4 @@ class Table:
         bool: True if within bounds, False otherwise.
 
         """
-        return (position.x >= 0 and position.x <= self._x) and (
-            position.y >= 0 and position.y <= self._y
-        )
+        return (position.x in range(0, self._x)) and (position.y in range(0, self._y))
